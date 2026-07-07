@@ -1587,6 +1587,43 @@
         transform: none;
       }
     }
+    /* mobile header overlap fix */
+    @media (max-width: 760px) {
+      :root {
+        --header-height: 0px;
+      }
+
+      html {
+        scroll-padding-top: 14px;
+      }
+
+      body {
+        padding-top: 0 !important;
+      }
+
+      .page-header {
+        position: relative;
+        inset: auto;
+      }
+
+      .page-header.scrolled .promo-bar {
+        display: flex;
+      }
+
+      .page-header.scrolled .nav-row {
+        padding-top: 16px;
+      }
+
+      .nav-links {
+        padding-bottom: 16px;
+        margin-bottom: 0;
+      }
+
+      .hero-pro,
+      .hero {
+        margin-top: 18px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1622,7 +1659,7 @@
         <button id="cartButton">Cart <span class="count-badge" id="cartCount">0</span></button>
         <button id="profileButton">Account</button>
         <button id="aiButton" title="AI Assistant" aria-label="AI Assistant" style="background:linear-gradient(90deg,#7c3aed,#06b6d4);color:#fff;border:none;padding:10px 14px;border-radius:999px;font-weight:800;">AI</button>
-        <a href="admin.html" class="admin-access" style="border:none;background:#111827;color:#fff;padding:10px 14px;border-radius:999px;font-weight:700;">Admin</a>
+        <button id="adminButton" type="button" class="admin-access hidden" style="border:none;background:#111827;color:#fff;padding:10px 14px;border-radius:999px;font-weight:700;">Admin</button>
       </div>
     </div>
     <div class="nav-links" aria-label="Shop categories">
@@ -2494,6 +2531,14 @@
         : `${getFormattedDate(start)} - ${getFormattedDate(end)}`;
     }
 
+    function isAdminUser(user) {
+      return Boolean(user?.email && user.email.toLowerCase() === adminEmail);
+    }
+
+    function updateAdminVisibility() {
+      if (!DOM.adminButton) return;
+      DOM.adminButton.classList.toggle('hidden', !isAdminUser(currentUser));
+    }
     function renderProfile() {
       if (!currentUser) {
         document.getElementById('profileName').textContent = 'Guest Shopper';
@@ -2504,7 +2549,9 @@
       }
       document.getElementById('profileName').textContent = currentUser.name;
       document.getElementById('profileEmail').textContent = currentUser.email;
-      document.getElementById('profileStatus').textContent = currentUser.isAdmin ? 'Admin access granted. You can open the admin dashboard.' : 'Member account active. Manage orders, addresses, and payment methods.';
+      currentUser.isAdmin = isAdminUser(currentUser);
+      updateAdminVisibility();
+      document.getElementById('profileStatus').textContent = currentUser.isAdmin ? 'Admin access granted. Use the Admin button in the header to open the dashboard.' : 'Member account active. Manage orders, addresses, and payment methods.';
       const orders = currentUser.orders || [];
       DOM.orderHistory.innerHTML = orders.length ? orders.map(order => `
         <tr>
@@ -2675,13 +2722,13 @@
     DOM.cartClose.addEventListener('click', () => closeModal(DOM.cartDrawer));
     DOM.authClose.addEventListener('click', () => closeModal(DOM.authModal));
     DOM.profileClose.addEventListener('click', () => closeModal(DOM.profileModal));
-    DOM.adminButton.addEventListener('click', event => {
+    DOM.adminButton?.addEventListener('click', event => {
       event.preventDefault();
       if (!currentUser) {
         openAuth();
         return;
       }
-      if (currentUser.email.toLowerCase() !== adminEmail) {
+      if (!isAdminUser(currentUser)) {
         alert('Admin access is reserved for mudassirarham140@gmail.com. Please log in with the admin email.');
         return;
       }
