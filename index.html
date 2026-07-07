@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>vendorvistas - Modern Marketplace Demo</title>
-  <meta name="description" content="Vendora is a modern, feature-rich marketplace demo supporting search, wishlist, compare, cart, and AI-powered recommendations. Try the AI Assistant for product suggestions." />
+  <meta name="description" content="vendorvistas is a modern, feature-rich marketplace demo supporting search, wishlist, compare, cart, and AI-powered recommendations. Try the AI Assistant for product suggestions." />
   <meta name="keywords" content="vendorvistas, online store, demo marketplace, ecommerce, ai recommendations, product search" />
   <meta name="author" content="vendorvistas Demo" />
   <!-- Open Graph / Social -->
@@ -1636,7 +1636,7 @@
       <div class="nav-brand">
         <div class="brand-logo">
           <div class="brand-mark" style="background: linear-gradient(135deg, #ec4899, #f59e0b);"><strong>V</strong></div>
-          <div class="brand-hero">Vendora</div>
+          <div class="brand-hero">vendorvistas</div>
         </div>
         <div class="brand-subtitle">Modern marketplace for shoppers, sellers, and smart buying.</div>
       </div>
@@ -1690,7 +1690,7 @@
       </div>
     </div>
     <div class="hero-card">
-      <span class="section-label">Vendora marketplace</span>
+      <span class="section-label">vendorvistas marketplace</span>
       <h1>A premium shopping home built for confident buying.</h1>
       <p>Browse seasonal picks, compare top-rated products, save favorites, and get AI-powered suggestions from one polished storefront.</p>
       <div class="hero-buttons">
@@ -1788,7 +1788,7 @@
 
     <div class="experience-panel">
       <div>
-        <span class="section-label">Why Vendora feels premium</span>
+        <span class="section-label">Why vendorvistas feels premium</span>
         <h2>Every detail helps shoppers decide faster.</h2>
         <p>Clear categories, visible savings, product comparisons, delivery choices, and helpful AI make the page feel complete instead of basic.</p>
         <div class="quality-list">
@@ -1810,7 +1810,7 @@
         <span class="section-label">Private list</span>
         <h2>Get first access to drops, coupons, and curated gift edits.</h2>
       </div>
-      <form class="loyalty-form" aria-label="Newsletter signup" onsubmit="event.preventDefault(); alert('Thanks for joining the Vendora private list.');">
+      <form class="loyalty-form" aria-label="Newsletter signup" onsubmit="event.preventDefault(); alert('Thanks for joining the vendorvistas private list.');">
         <input type="email" placeholder="Email address" aria-label="Email address" required />
         <button type="submit" class="btn-primary">Join list</button>
       </form>
@@ -2090,7 +2090,7 @@
   </div>
 
   <footer style="padding: 28px 24px; text-align:center; color: var(--muted);">
-    (c) 2026 Vendora. This demo includes customer features, checkout UI, and account management flows.
+    (c) 2026 vendorvistas. This demo includes customer features, checkout UI, and account management flows.
   </footer>
 
   <script>
@@ -2776,7 +2776,7 @@
         openAuth();
         return;
       }
-      alert('Checkout complete! Thank you for shopping with Vendora.');
+      alert('Checkout complete! Thank you for shopping with vendorvistas.');
       cart = [];
       appliedCoupon = '';
       DOM.couponInput.value = '';
@@ -2879,11 +2879,11 @@
       <div class="modal hidden" id="aiModal" aria-hidden="true">
         <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle">
           <button class="modal-close" id="aiClose" aria-label="Close">x</button>
-          <h2 id="aiModalTitle">Vendora AI Assistant</h2>
+          <h2 id="aiModalTitle">vendorvistas AI Assistant</h2>
           <div id="aiChat" style="min-height:220px; max-height:420px; overflow:auto; padding:12px; border-radius:12px; background:var(--surface-soft); margin-top:12px;"></div>
           <div style="display:flex; gap:8px; margin-top:12px;">
             <input id="aiInput" placeholder="Ask me for recommendations or find products (e.g. 'recommend me headphones under $100')" style="flex:1; padding:12px; border-radius:12px; border:1px solid rgba(15,23,42,0.08)" />
-            <button id="aiSend" class="btn-primary">Ask Vendora</button>
+            <button id="aiSend" class="btn-primary">Ask vendorvistas</button>
           </div>
           <div class="ai-suggestions">
             <button type="button" class="ai-suggestion">Recommend best deals</button>
@@ -2904,10 +2904,10 @@
       const el = document.createElement('div');
       el.className = `ai-message ${from === 'ai' ? 'assistant' : 'user'}`;
       if (useHtml) {
-        el.innerHTML = `<strong>${from === 'ai' ? 'Vendora AI' : 'You'}</strong>${text}`;
+        el.innerHTML = `<strong>${from === 'ai' ? 'vendorvistas AI' : 'You'}</strong>${text}`;
       } else {
         const sanitized = text.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br/>');
-        el.innerHTML = `<strong>${from === 'ai' ? 'Vendora AI' : 'You'}</strong><div>${sanitized}</div>`;
+        el.innerHTML = `<strong>${from === 'ai' ? 'vendorvistas AI' : 'You'}</strong><div>${sanitized}</div>`;
       }
       aiChat.appendChild(el);
       aiChat.scrollTop = aiChat.scrollHeight;
@@ -2987,7 +2987,7 @@
 
     document.getElementById('aiButton').addEventListener('click', () => {
       openModal(aiModal);
-      appendAiMessage('Welcome back! I am Vendora AI - your product concierge for recommendations, gifts, bundles, and quick comparisons. Try: "Best deals now", "Gift ideas", or "Compare headphones".', 'ai');
+      appendAiMessage('Welcome back! I am vendorvistas AI - your product concierge for recommendations, gifts, bundles, and quick comparisons. Try: "Best deals now", "Gift ideas", or "Compare headphones".', 'ai');
       aiInput.focus();
     });
     aiClose.addEventListener('click', () => closeModal(aiModal));
@@ -3060,7 +3060,7 @@
       container.innerHTML = `
         <div class="info-card">
           <h3>AI Recommendations</h3>
-          <p>Personalized picks powered by Vendora AI (client-side).</p>
+          <p>Personalized picks powered by vendorvistas AI (client-side).</p>
           <div class="card-grid">${picks.map(p => `<div class="product-card" style="border-radius:18px; padding:12px;"><img src="${p.image}" style="height:120px; object-fit:cover; border-radius:12px;"/><div style="padding:8px;"><strong>${p.title}</strong><div style="color:#6b7280">${formatPrice(p.price)}</div><button class="btn-primary" data-action="quick-view" data-id="${p.id}" style="margin-top:8px;">View</button></div></div>`).join('')}</div>
         </div>
       `;
